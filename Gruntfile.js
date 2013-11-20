@@ -32,7 +32,8 @@ module.exports = function(grunt) {
           }
         }
       }
-    }
+    },
+
     jasmine: {
       options: {
         helpers: [
@@ -57,5 +58,62 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    jshint: {
+      files: ['Gruntfile.js', 'js/src/**/*.js', 'js/test/**/*.js'],
+      options: {
+        bitwise: true,
+        curly: true,
+        eqeqeq: true,
+        immed: true,
+        latedef: true,
+        loopfunc: true,
+        newcap: true,
+        noarg: true,
+        noempty: true,
+        nonew: true,
+        sub: true,
+        undef: true,
+        boss: true,
+        debug: true,
+        eqnull: true,
+        multistr: true,
+        // environments
+        browser: true,
+        devel: true,
+        node: true,
+
+        globals: {
+          afterEach: true,
+          aronnax: true,
+          beforeEach : true,
+          define: true,
+          Benchmark: true,
+          describe : true,
+          expect : true,
+          goog: true,
+          require: true,
+          jasemine: true,
+          sinon: true,
+          module: true,
+          waitsFor: true,
+          it : true,
+          _: true
+        }
+      }
+    }
   });
-}
+
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+
+  // Default task(s).
+  grunt.registerTask('lint', 'jshint');
+  grunt.registerTask('concat', 'requirejs:concat');
+  grunt.registerTask('compile', 'requirejs:compile');
+  grunt.registerTask('test', 'jasmine:test');
+
+  grunt.registerTask('default', ['lint', 'concat', 'compile', 'test']);
+  
+};
