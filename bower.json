@@ -1,0 +1,17 @@
+{
+  "name": "notes",
+  "ignore": [
+    "_SpecRunner.html",
+    "README"
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "https://github.com/msecret/aronnax": "*",
+    "requirejs": "~2.1.8",
+    "underscore": "~1.5.1"
+  },
+  "devDependencies": {
+    "jasmine-sinon": "~0.1.0",
+    "sinonjs": "~1.7.1"
+  }
+}
